@@ -26,7 +26,7 @@ public class UsuarioController {
     private UsuarioService service;
 
     @JsonView(View.UsuarioView.class)
-    @GetMapping
+    @GetMapping(value = "listar")
     public List<Usuario> todosUsuarios() {
         return service.todosUsuarios();
     }
