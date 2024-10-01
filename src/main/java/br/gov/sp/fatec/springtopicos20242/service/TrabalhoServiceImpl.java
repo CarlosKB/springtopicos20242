@@ -1,5 +1,6 @@
 package br.gov.sp.fatec.springtopicos20242.service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +30,9 @@ public class TrabalhoServiceImpl implements TrabalhoService {
                 trabalho.getDescricao() == null
         ) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST ,"Titulo, nota ou descrição inválidos!");
+        }
+        if(trabalho.getDataHora() == null){
+            trabalho.setDataHora(LocalDateTime.now());
         }
         return repo.save(trabalho);
     }
