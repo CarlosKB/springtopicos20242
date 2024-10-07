@@ -38,11 +38,11 @@ public class TrabalhoServiceImpl implements TrabalhoService {
     }
 
     public List<Trabalho> todosTrabalhos() {
-        List<Trabalho> trabalhos = new ArrayList<Trabalho>();
-        for(Trabalho trabalho: repo.findAll()) {
-            trabalhos.add(trabalho);
-        }
-        return trabalhos;
+        // List<Trabalho> trabalhos = new ArrayList<Trabalho>();
+        // for(Trabalho trabalho: repo.findAll()) {
+        //     trabalhos.add(trabalho);
+        // }
+        return repo.findAll();
     }
 
     public List<Trabalho> buscarPeloTituloAndNota(String titulo, Integer nota){
