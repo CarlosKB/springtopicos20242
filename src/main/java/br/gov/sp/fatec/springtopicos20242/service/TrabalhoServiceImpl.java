@@ -26,10 +26,9 @@ public class TrabalhoServiceImpl implements TrabalhoService {
     public Trabalho novoTrabalho(Trabalho trabalho) {
         if(trabalho == null ||
                 trabalho.getTitulo() == null ||
-                trabalho.getNota() == null ||
-                trabalho.getDescricao() == null
+                trabalho.getGrupo() == null
         ) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST ,"Titulo, nota ou descrição inválidos!");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST ,"Titulo ou descrição inválidos!");
         }
         if(trabalho.getDataHora() == null){
             trabalho.setDataHora(LocalDateTime.now());
@@ -38,11 +37,11 @@ public class TrabalhoServiceImpl implements TrabalhoService {
     }
 
     public List<Trabalho> todosTrabalhos() {
-        // List<Trabalho> trabalhos = new ArrayList<Trabalho>();
-        // for(Trabalho trabalho: repo.findAll()) {
-        //     trabalhos.add(trabalho);
-        // }
-        return repo.findAll();
+        List<Trabalho> trabalhos = new ArrayList<Trabalho>();
+        for(Trabalho trabalho: repo.findAll()) {
+            trabalhos.add(trabalho);
+        }
+        return trabalhos;
     }
 
     public List<Trabalho> buscarPeloTituloAndNota(String titulo, Integer nota){
